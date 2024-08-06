@@ -1,0 +1,68 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+[x-cloak] {
+    display: none;
+}
+
+
+.signika-negative-100 {
+    font-family: "Signika Negative", sans-serif;
+    font-optical-sizing: auto;
+    font-weight: 100;
+    font-style: normal;
+  }
+
+  .signika-negative-200 {
+    font-family: "Signika Negative", sans-serif;
+    font-optical-sizing: auto;
+    font-weight: 200;
+    font-style: normal;
+  }
+
+  .signika-negative-300 {
+    font-family: "Signika Negative", sans-serif;
+    font-optical-sizing: auto;
+    font-weight: 300;
+    font-style: normal;
+  }
+
+  .signika-negative-400 {
+    font-family: "Signika Negative", sans-serif;
+    font-optical-sizing: auto;
+    font-weight: 400;
+    font-style: normal;
+  }
+
+  .signika-negative-500 {
+    font-family: "Signika Negative", sans-serif;
+    font-optical-sizing: auto;
+    font-weight: 500;
+    font-style: normal;
+  }
+
+  /* Filament Tables Customization */
+.fi-ta-actions button {
+    @apply !bg-green-600;
+}
+
+.filament-tables-header-cell button {
+    @apply !text-white;
+    @apply !border-gray-100;
+  }
+
+  .fi-ta-table th {
+      @apply !bg-green-600;
+    }
+
+
+  .fi-ta-header-cell-label
+  {
+      @apply !text-white;
+
+  }
+
+  .columns-table {
+    @apply !w-[100rem];
+  }
