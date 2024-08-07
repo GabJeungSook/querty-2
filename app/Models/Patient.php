@@ -30,4 +30,9 @@ class Patient extends Model
         return $this->hasOne(PatientDetail::class);
     }
 
+    public function patientHistory()
+    {
+        return $this->hasMany(PatientHistory::class);
+    }
+
 }

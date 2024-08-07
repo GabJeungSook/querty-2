@@ -1,4 +1,4 @@
-    @section('title', 'Dashboard')
+    @section('title', ' Dashboard')
     <div class="signika-negative-100">
         <div class="grid grid-cols-4 space-x-4">
             <div class="col-span-1">

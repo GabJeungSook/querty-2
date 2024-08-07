@@ -1,9 +1,9 @@
 <?php
 
-namespace App\Livewire\Admin;
+namespace App\Livewire\Facility;
 
 use Livewire\Component;
-use App\Models\Facility;
+use App\Models\CaseCategory as CasesModel;
 use Filament\Tables\Table;
 use Filament\Forms\Contracts\HasForms;
 use Filament\Forms\Components\Textarea;
@@ -14,7 +14,7 @@ use Filament\Tables\Actions\CreateAction;
 use Filament\Forms\Concerns\InteractsWithForms;
 use Filament\Tables\Concerns\InteractsWithTable;
 
-class Facilities extends Component implements HasForms, HasTable
+class Cases extends Component implements HasForms, HasTable
 {
     use InteractsWithTable;
     use InteractsWithForms;
@@ -22,23 +22,18 @@ class Facilities extends Component implements HasForms, HasTable
     public function table(Table $table): Table
     {
         return $table
-        ->query(Facility::query())
+        ->query(CasesModel::query())
         ->columns([
             TextColumn::make('name')
-            ->searchable(),
-            TextColumn::make('address')
             ->searchable(),
         ])
         ->headerActions([
             CreateAction::make()
-                ->model(Facility::class)
-                ->label('Add Facility')
-                ->modalHeading('Add Facility')
+                ->model(CasesModel::class)
+                ->label('Add Case Category')
+                ->modalHeading('Add Case Category')
                 ->form([
                     TextInput::make('name')
-                    ->required()
-                    ->maxLength(255),
-                    Textarea::make('address')
                     ->required()
                     ->maxLength(255),
                 ])->disableCreateAnother()
@@ -47,6 +42,6 @@ class Facilities extends Component implements HasForms, HasTable
 
     public function render()
     {
-        return view('livewire.admin.facilities');
+        return view('livewire.facility.cases');
     }
 }

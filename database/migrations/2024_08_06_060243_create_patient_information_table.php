@@ -14,10 +14,10 @@ return new class extends Migration
         Schema::create('patient_information', function (Blueprint $table) {
             $table->id();
             $table->foreignId('patient_id')->constrained()->cascadeOnDelete();
+            $table->string('philhealth_number');
             $table->string('first_name');
             $table->string('last_name');
             $table->text('address');
-            $table->string('phone_number');
             $table->date('date_of_birth');
             $table->timestamps();
         });
