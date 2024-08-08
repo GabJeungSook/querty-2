@@ -21,6 +21,42 @@ class UserSeeder extends Seeder
                 'email' => 'admin@gmail.com',
                 'password' => Hash::make('password'),
             ],
+            [
+                'name' => 'St. Elizabeth Hospital',
+                'role_id' => 2,
+                'email' => 'elizabeth@gmail.com',
+                'password' => Hash::make('password'),
+            ],
+            [
+                'name' => 'General Santos Doctor Hospital Inc.',
+                'role_id' => 2,
+                'email' => 'general@gmail.com',
+                'password' => Hash::make('password'),
+            ],
+            [
+                'name' => 'Sarmed',
+                'role_id' => 2,
+                'email' => 'sarmed@gmail.com',
+                'password' => Hash::make('password'),
+            ],
+            [
+                'name' => 'ACE Medical Center',
+                'role_id' => 2,
+                'email' => '@ace@gmail.com',
+                'password' => Hash::make('password'),
+            ],
+            [
+                'name' => 'St. Louis Hospital',
+                'role_id' => 2,
+                'email' => 'stlouis@gmail.com',
+                'password' => Hash::make('password'),
+            ],
+            [
+                'name' => 'Northern Mindanao Medical Center',
+                'role_id' => 2,
+                'email' => 'northern@gmail.com',
+                'password' => Hash::make('password'),
+            ],
         ]);
     }
 }

@@ -10,51 +10,72 @@
     </div>
 
     <h1 class="text-4xl font-medium">Patient History</h1>
-    <div class="mt-5 overflow-hidden bg-white shadow sm:rounded-lg">
-        <div class="px-4 py-6 sm:px-6">
-          <h3 class="text-base font-semibold leading-7 text-gray-900">Patient Information</h3>
-          <p class="mt-1 max-w-2xl text-sm leading-6 text-gray-500">Personal details.</p>
-        </div>
-        <div class="border-t border-gray-100">
-          <dl class="divide-y divide-gray-100">
-            <div class="px-4 py-6 sm:grid sm:grid-cols-3 sm:gap-4 sm:px-6">
-              <dt class="text-sm font-medium text-gray-900">Full name</dt>
-              <dd class="mt-1 text-sm leading-6 text-gray-700 sm:col-span-2 sm:mt-0">{{$record->first_name.' '.$record->last_name}}</dd>
-            </div>
-            <div class="px-4 py-6 sm:grid sm:grid-cols-3 sm:gap-4 sm:px-6">
-              <dt class="text-sm font-medium text-gray-900">Address</dt>
-              <dd class="mt-1 text-sm leading-6 text-gray-700 sm:col-span-2 sm:mt-0">{{$record->address}}</dd>
-            </div>
-            <div class="px-4 py-6 sm:grid sm:grid-cols-3 sm:gap-4 sm:px-6">
-              <dt class="text-sm font-medium text-gray-900">Birthday</dt>
-              <dd class="mt-1 text-sm leading-6 text-gray-700 sm:col-span-2 sm:mt-0">{{Carbon\Carbon::parse($record->date_of_birth)->format('F, d Y')}}</dd>
-            </div>
-          </dl>
+    <div class="p-6 flex-col text-sm w-1/4 font-medium divide-y-2 divide-gray-800">
+      <div class="py-2">
+        <span class="text-left">Philheath Number:</span>
+        <span class="text-center">{{$record->philhealth_number}}</span>
+    </div>
+      <div class="py-2">
+          <span class="text-left">Name:</span>
+          <span class="text-center">{{$record->first_name.' '.$record->last_name}}</span>
+      </div>
+      <div class="py-2">
+          <span class="text-left">Address:</span>
+          <span class="text-center">{{$record->address}}</span>
+      </div>
+      <div class="py-2">
+          <span class="text-left">Birthday:</span>
+          <span class="text-center">{{Carbon\Carbon::parse($record->date_of_birth)->format('F, d Y')}}</span>
+      </div>
+      <div></div>
+  </div>
+  <div class="px-4 sm:px-6 lg:px-8">
+    <div class="sm:flex sm:items-center">
+    </div>
+    <div class="mt-8 flow-root">
+      <div class="-mx-4 -my-2 overflow-x-auto sm:-mx-6 lg:-mx-8">
+        <div class="inline-block min-w-full py-2 align-middle sm:px-6 lg:px-8">
+          <table class="min-w-full divide-y divide-gray-300">
+            <thead>
+              <tr class="divide-x divide-gray-200">
+                <th scope="col" class="py-3.5 pl-4 pr-4 text-left text-sm font-semibold text-gray-900 sm:pl-0">Facility</th>
+                <th scope="col" class="px-4 py-3.5 text-left text-sm font-semibold text-gray-900">Date</th>
+                <th scope="col" class="py-3.5 pl-4 pr-4 text-left text-sm font-semibold text-gray-900 sm:pr-0">Diagnosis</th>
+              </tr>
+            </thead>
+            <tbody class="divide-y divide-gray-200 bg-white">
+               @forelse ($record->patient->patientHistory as $item)
+               <tr class="divide-x divide-gray-200">
+                <td class="whitespace-nowrap py-4 pl-4 pr-4 text-sm font-medium text-gray-900 sm:pl-0">{{$item->facility->name}}</td>
+                <td class="whitespace-nowrap p-4 text-sm text-gray-500">{{Carbon\Carbon::parse($item->created_at)->format('F, d Y')}}</td>
+                <td class="whitespace-nowrap p-4 text-sm text-gray-500">{{$item->diagnosis}}
+                </td>
+              </tr>
+            @empty
+                <tr class="divide-x divide-gray-200">
+                    <td colspan="3" class="text-center whitespace-nowrap py-4 pl-4 pr-4 text-lg italic font-normal text-gray-900 sm:pl-0">
+                        ---No Record Yet---
+                    </td>
+                </tr>
+               @endforelse
+            </tbody>
+          </table>
         </div>
       </div>
-      {{-- diagnosis --}}
+    </div>
+  </div>
+  <div class="flex justify-end">
+    {{ $this->addDiagnosisAction }}
 
-      <div class="mt-5 overflow-hidden bg-white shadow sm:rounded-lg">
-        <div class="px-4 py-6 sm:px-6">
-          <h3 class="text-base font-semibold leading-7 text-gray-900">Diagnosis History</h3>
-          <p class="mt-1 max-w-2xl text-sm leading-6 text-gray-500"></p>
-        </div>
-        <div class="border-t border-gray-100">
-            <dl class="grid grid-cols-1 sm:grid-cols-2 px-5">
-                <div class="border-t border-gray-100 px-4 py-6 sm:col-span-1 sm:px-0">
-                  <dt class="text-sm font-medium leading-6 text-gray-900">Facility</dt>
-                  <dd class="mt-1 text-sm leading-6 text-gray-700 sm:mt-2">St. Elizabeth</dd>
-                </div>
-                <div class="border-t border-gray-100 px-4 py-6 sm:col-span-1 sm:px-0">
-                  <dt class="text-sm font-medium leading-6 text-gray-900">Date of Diagnosis</dt>
-                  <dd class="mt-1 text-sm leading-6 text-gray-700 sm:mt-2">August 09, 2024</dd>
-                </div>
-                <div class="border-t border-gray-100 px-4 py-6 sm:col-span-2 sm:px-0">
-                  <dt class="text-sm font-medium leading-6 text-gray-900">Diagnosis</dt>
-                  <dd class="mt-1 text-sm leading-6 text-gray-700 sm:mt-2">Fugiat ipsum ipsum deserunt culpa aute sint do nostrud anim incididunt cillum culpa consequat. Excepteur qui ipsum aliquip consequat sint. Sit id mollit nulla mollit nostrud in ea officia proident. Irure nostrud pariatur mollit ad adipisicing reprehenderit deserunt qui eu.</dd>
-                </div>
-              </dl>
-        </div>
-      </div>
+    <x-filament-actions::modals />
+    {{-- <a wire:navigate href="{{route('facility.patients')}}">
+        <button type="button" class="flex text-sm text-gray-50 bg-green-800 hover:bg-green-600 p-2 font-semibold rounded-md border-1 border-green-600 leading-6">
+          <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-6 h-6">
+            <path stroke-linecap="round" stroke-linejoin="round" d="M12 9v6m3-3H9m12 0a9 9 0 1 1-18 0 9 9 0 0 1 18 0Z" />
+          </svg>
+
+          <span class="px-2">Add Diagnosis</span></button>
+    </a> --}}
+</div>
 
 </div>

@@ -212,7 +212,7 @@
                     Accounts
                   </a>
                 </li>
-                <li>
+                {{-- <li>
                   <a href="{{ route('admin.reports') }}" wire:navigate class="{{ request()->routeIs('admin.reports') ? 'group flex gap-x-3 rounded-md bg-green-800 p-2 text-md font-normal leading-6 text-gray-50' : 'group flex gap-x-3 rounded-md p-2 text-md font-normal leading-6 text-gray-700 hover:bg-green-800 hover:text-gray-50'}}">
                     <svg class="{{ request()->routeIs('admin.reports') ? 'h-6 w-6 shrink-0 text-gray-50' : 'h-6 w-6 shrink-0 text-gray-700 group-hover:text-gray-50'}}" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" aria-hidden="true">
                       <path stroke-linecap="round" stroke-linejoin="round" d="M10.5 6a7.5 7.5 0 107.5 7.5h-7.5V6z" />
@@ -220,7 +220,7 @@
                     </svg>
                     Reports
                   </a>
-                </li>
+                </li> --}}
                 @else
                 <li>
                     <!-- Current: "bg-gray-50 text-indigo-600", Default: "text-gray-700 hover:text-indigo-600 hover:bg-gray-50" -->

@@ -43,13 +43,13 @@ class Patients extends Component implements HasForms, HasTable
             Action::make('add_patient')
             ->label('Add Patient')
             ->form([
-                TextInput::make('philhealth_number')
-                ->required()
-                ->maxLength(255),
-                TextInput::make('first_name')
-                ->required()
-                ->maxLength(255),
-                TextInput::make('last_name')
+                    TextInput::make('philhealth_number')
+                    ->required()
+                    ->maxLength(255),
+                    TextInput::make('first_name')
+                    ->required()
+                    ->maxLength(255),
+                    TextInput::make('last_name')
                 ->required()
                 ->maxLength(255),
                 Textarea::make('address')

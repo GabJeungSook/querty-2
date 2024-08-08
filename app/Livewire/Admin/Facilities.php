@@ -5,8 +5,10 @@ namespace App\Livewire\Admin;
 use Livewire\Component;
 use App\Models\Facility;
 use Filament\Tables\Table;
+use App\Http\Controllers\FilamentForm;
 use Filament\Forms\Contracts\HasForms;
 use Filament\Forms\Components\Textarea;
+use Filament\Tables\Actions\EditAction;
 use Filament\Tables\Columns\TextColumn;
 use Filament\Tables\Contracts\HasTable;
 use Filament\Forms\Components\TextInput;
@@ -34,14 +36,11 @@ class Facilities extends Component implements HasForms, HasTable
                 ->model(Facility::class)
                 ->label('Add Facility')
                 ->modalHeading('Add Facility')
-                ->form([
-                    TextInput::make('name')
-                    ->required()
-                    ->maxLength(255),
-                    Textarea::make('address')
-                    ->required()
-                    ->maxLength(255),
-                ])->disableCreateAnother()
+                ->form(FilamentForm::facilityForm())->disableCreateAnother()
+        ])
+        ->actions([
+            EditAction::make()
+            ->form(FilamentForm::facilityForm())->button()
         ]);
     }
 
