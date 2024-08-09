@@ -49,8 +49,8 @@
                <tr class="divide-x divide-gray-200">
                 <td class="whitespace-nowrap py-4 pl-4 pr-4 text-sm font-medium text-gray-900 sm:pl-0">{{$item->facility->name}}</td>
                 <td class="whitespace-nowrap p-4 text-sm text-gray-500">{{Carbon\Carbon::parse($item->created_at)->format('F, d Y')}}</td>
-                <td class="whitespace-nowrap p-4 text-sm text-gray-500">{{$item->diagnosis}}
                 <td class="whitespace-nowrap p-4 text-sm text-gray-500">{{$item->patient->caseCategory->name}}
+                    <td class="whitespace-nowrap p-4 text-sm text-gray-500">{{$item->diagnosis}}
                 </td>
               </tr>
             @empty
