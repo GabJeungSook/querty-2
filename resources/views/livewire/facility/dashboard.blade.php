@@ -21,7 +21,7 @@
             <div class="flex justify-between bg-gradient-to-r from-green-700 via-green-800 to-green-900 p-6 gap-8 rounded-lg shadow-xl">
                 <div class="my-auto">
                   <div class="text-lg text-white">My Patients</div>
-                  <div class="text-4xl text-white">139</div> 
+                  <div class="text-4xl text-white">139</div>
                 </div>
                 <div class="text-white my-auto bg-gradient-to-l from-green-700 via-green-800 to-green-900 rounded-full p-4">
                     <svg class="h-12 w-12" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor">
@@ -54,35 +54,33 @@
                             <thead>
                               <tr>
                                 <th scope="col" class="py-3.5 pl-4 pr-3 text-left text-md font-semibold text-gray-600 sm:pl-6 lg:pl-8">Name</th>
+                                <th scope="col" class="py-3.5 pl-4 pr-3 text-left text-md font-semibold text-gray-600 sm:pl-6 lg:pl-8">Address</th>
                               </tr>
                             </thead>
                             <tbody class="divide-y divide-gray-200 bg-white">
                               <tr>
-                                <td class="whitespace-nowrap py-4 pl-4 pr-3 text-sm font-medium text-gray-900 sm:pl-6 lg:pl-8">St. Elizabeth
-                                    Hospital</td>
-                                <td class="whitespace-nowrap px-3 py-4 text-lg text-green-400">55,250</td>
+                                <td class="whitespace-nowrap py-4 pl-4 pr-3 text-sm font-medium text-gray-900 sm:pl-6 lg:pl-8">Juan Dela Cruz</td>
+                                <td class="whitespace-nowrap px-3 py-4 text-lg text-green-400">General Santos, SOCKSARGEN</td>
                               </tr>
                               <tr>
-                                <td class="whitespace-nowrap py-4 pl-4 pr-3 text-sm font-medium text-gray-900 sm:pl-6 lg:pl-8">General Santos
-                                    Doctor Hospital Inc.</td>
-                                <td class="whitespace-nowrap px-3 py-4 text-lg text-green-400">68,254</td>
+                                <td class="whitespace-nowrap py-4 pl-4 pr-3 text-sm font-medium text-gray-900 sm:pl-6 lg:pl-8">Mario Lopez</td>
+                                <td class="whitespace-nowrap px-3 py-4 text-lg text-green-400">Manila, Metro Manila</td>
                               </tr>
                               <tr>
-                                <td class="whitespace-nowrap py-4 pl-4 pr-3 text-sm font-medium text-gray-900 sm:pl-6 lg:pl-8">Sarmed</td>
-                                <td class="whitespace-nowrap px-3 py-4 text-lg text-green-400">42,896</td>
+                                <td class="whitespace-nowrap py-4 pl-4 pr-3 text-sm font-medium text-gray-900 sm:pl-6 lg:pl-8">Jane Doe</td>
+                                <td class="whitespace-nowrap px-3 py-4 text-lg text-green-400">Koronadal, South Cotabato</td>
                               </tr>
                               <tr>
-                                <td class="whitespace-nowrap py-4 pl-4 pr-3 text-sm font-medium text-gray-900 sm:pl-6 lg:pl-8">ACE Medical
-                                    Center</td>
-                                <td class="whitespace-nowrap px-3 py-4 text-lg text-green-400">44,685</td>
+                                <td class="whitespace-nowrap py-4 pl-4 pr-3 text-sm font-medium text-gray-900 sm:pl-6 lg:pl-8">Mary Perez</td>
+                                <td class="whitespace-nowrap px-3 py-4 text-lg text-green-400">Mactan, Cebu</td>
                               </tr>
                               <tr>
-                                <td class="whitespace-nowrap py-4 pl-4 pr-3 text-sm font-medium text-gray-900 sm:pl-6 lg:pl-8">St. Louis Hospital</td>
-                                <td class="whitespace-nowrap px-3 py-4 text-lg text-green-400">35,784</td>
+                                <td class="whitespace-nowrap py-4 pl-4 pr-3 text-sm font-medium text-gray-900 sm:pl-6 lg:pl-8">Pedro Reyes</td>
+                                <td class="whitespace-nowrap px-3 py-4 text-lg text-green-400">Cagayan De Oro</td>
                               </tr>
                               <tr>
-                                <td class="whitespace-nowrap py-4 pl-4 pr-3 text-sm font-medium text-gray-900 sm:pl-6 lg:pl-8">Northern Mindanao Medical Center</td>
-                                <td class="whitespace-nowrap px-3 py-4 text-lg text-green-400">9,584</td>
+                                <td class="whitespace-nowrap py-4 pl-4 pr-3 text-sm font-medium text-gray-900 sm:pl-6 lg:pl-8">Anna Martin</td>
+                                <td class="whitespace-nowrap px-3 py-4 text-lg text-green-400">Norala, North Cotabato</td>
                               </tr>
                             </tbody>
                           </table>
