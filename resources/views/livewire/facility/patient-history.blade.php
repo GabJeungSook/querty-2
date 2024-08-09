@@ -55,7 +55,7 @@
               </tr>
             @empty
                 <tr class="divide-x divide-gray-200">
-                    <td colspan="3" class="text-center whitespace-nowrap py-4 pl-4 pr-4 text-lg italic font-normal text-gray-900 sm:pl-0">
+                    <td colspan="4" class="text-center whitespace-nowrap py-4 pl-4 pr-4 text-lg italic font-normal text-gray-900 sm:pl-0">
                         ---No Record Yet---
                     </td>
                 </tr>
