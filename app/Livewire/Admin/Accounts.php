@@ -80,6 +80,18 @@ class Accounts extends Component implements HasForms, HasTable
                     $facility->save();
                 })
                 ->disableCreateAnother()
+        ])
+        ->actions([
+            EditAction::make()
+            ->form([
+                TextInput::make('name')
+                ->required()
+                ->maxLength(255),
+                TextInput::make('email')
+                ->required()
+                ->email()
+                ->maxLength(255),
+            ])->button()
         ]);
     }
 
