@@ -19,4 +19,9 @@ class PatientHistory extends Model
     {
         return $this->belongsTo(Facility::class);
     }
+
+    public function caseCategory()
+    {
+        return $this->belongsTo(CaseCategory::class);
+    }
 }
