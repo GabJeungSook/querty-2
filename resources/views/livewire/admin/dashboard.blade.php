@@ -1,6 +1,6 @@
     @section('title', ' Dashboard')
     <div class="signika-negative-100">
-        <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 space-x-4">
+        <div class="grid grid-cols-4 space-x-4">
             <div class="col-span-1">
                 <div class="flex justify-between bg-gradient-to-r from-green-700 via-green-800 to-green-900 p-6 gap-8 rounded-lg shadow-xl">
                     <div class="my-auto">
