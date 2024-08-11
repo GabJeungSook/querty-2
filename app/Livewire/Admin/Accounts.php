@@ -31,6 +31,7 @@ class Accounts extends Component implements HasForms, HasTable
             TextColumn::make('name')
             ->searchable(),
             TextColumn::make('email')
+            ->unique(ignoreRecord: true)
             ->searchable(),
             TextColumn::make('facilities.name')
             ->label('Facility')

@@ -12,6 +12,7 @@ class FilamentForm extends Controller
         return [
             TextInput::make('name')
             ->required()
+        
             ->maxLength(255),
             Textarea::make('address')
             ->required()
