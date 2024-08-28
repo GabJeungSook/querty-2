@@ -28,6 +28,7 @@ class User extends Authenticatable
         'email',
         'password',
         'role_id',
+        'facility_id',
     ];
 
     /**
@@ -68,5 +69,10 @@ class User extends Authenticatable
     public function facilities()
     {
         return $this->hasMany(Facility::class);
+    }
+
+    public function facility()
+    {
+        return $this->belongsTo(Facility::class);
     }
 }

@@ -10,6 +10,7 @@ use Filament\Tables\Actions\Action;
 use Filament\Forms\Contracts\HasForms;
 use Filament\Forms\Components\Textarea;
 use Filament\Tables\Columns\TextColumn;
+use Filament\Tables\Columns\ViewColumn;
 use Filament\Tables\Contracts\HasTable;
 use Filament\Forms\Components\TextInput;
 use Filament\Notifications\Notification;
@@ -28,7 +29,7 @@ class Patients extends Component implements HasForms, HasTable
         return $table
         ->query(PatientInformation::query())
         ->columns([
-            TextColumn::make('philhealth_number')
+            ViewColumn::make('philhealth_number')->view('tables.columns.phil-health-number')
             ->searchable(),
             TextColumn::make('patient.facility.name')
             ->searchable(),
@@ -36,8 +37,8 @@ class Patients extends Component implements HasForms, HasTable
             ->searchable(),
             TextColumn::make('last_name')
             ->searchable(),
-            TextColumn::make('address')
-            ->searchable(),
+            // TextColumn::make('address')
+            // ->searchable(),
         ])
         ->headerActions([
             Action::make('add_patient')
@@ -52,14 +53,13 @@ class Patients extends Component implements HasForms, HasTable
                     TextInput::make('last_name')
                 ->required()
                 ->maxLength(255),
-                Textarea::make('address')
-                ->required()
-                ->maxLength(255),
-                DatePicker::make('date_of_birth')
-                ->required()
+                // Textarea::make('address')
+                // ->required()
+                // ->maxLength(255),
+                // DatePicker::make('date_of_birth')
+                // ->required()
             ])
             ->action(function(array $data) {
-                    //if existing philhealth number
                     $existing_patient = PatientInformation::where('philhealth_number', $data['philhealth_number'])->first();
                     if($existing_patient) {
                         Notification::make()
@@ -77,8 +77,8 @@ class Patients extends Component implements HasForms, HasTable
                             'philhealth_number' => $data['philhealth_number'],
                             'first_name' => $data['first_name'],
                             'last_name' => $data['last_name'],
-                            'address' => $data['address'],
-                            'date_of_birth' => $data['date_of_birth'],
+                            // 'address' => $data['address'],
+                            // 'date_of_birth' => $data['date_of_birth'],
                         ]);
 
                         Notification::make()
@@ -91,11 +91,11 @@ class Patients extends Component implements HasForms, HasTable
             }),
         ])
         ->actions([
-            Action::make('view')
-            ->label('View History')
-            ->button()
-            ->icon('heroicon-o-eye')
-            ->url(fn (PatientInformation $record): string => route('facility.patient-history', $record)),
+            // Action::make('view')
+            // ->label('View History')
+            // ->button()
+            // ->icon('heroicon-o-eye')
+            // ->url(fn (PatientInformation $record): string => route('facility.patient-history', $record)),
         ]);
     }
 

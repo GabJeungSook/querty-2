@@ -196,6 +196,16 @@
                   </a>
                 </li>
                 <li>
+                    <!-- Current: "bg-gray-50 text-indigo-600", Default: "text-gray-700 hover:text-indigo-600 hover:bg-gray-50" -->
+                    <a href="{{ route('facility.cases') }}" wire:navigate class="{{ request()->routeIs('facility.cases') ? 'group flex gap-x-3 rounded-md bg-green-800 p-2 text-md font-normal leading-6 text-gray-50' : 'group flex gap-x-3 rounded-md p-2 text-md font-normal leading-6 text-gray-700 hover:bg-green-800 hover:text-gray-50'}}">
+                        <svg class="{{ request()->routeIs('facility.cases') ? 'h-6 w-6 shrink-0 text-gray-50' : 'h-6 w-6 shrink-0 text-gray-700 group-hover:text-gray-50'}}" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" aria-hidden="true">
+                            <path stroke-linecap="round" stroke-linejoin="round" d="M10.5 6a7.5 7.5 0 107.5 7.5h-7.5V6z" />
+                            <path stroke-linecap="round" stroke-linejoin="round" d="M13.5 10.5H21A7.5 7.5 0 0013.5 3v7.5z" />
+                          </svg>
+                      Cases
+                    </a>
+                  </li>
+                <li>
                     <a href="{{ route('admin.facilities') }}" wire:navigate class="{{ request()->routeIs('admin.facilities') ? 'group flex gap-x-3 rounded-md bg-green-800 p-2 text-md font-normal leading-6 text-gray-50' : 'group flex gap-x-3 rounded-md p-2 text-md font-normal leading-6 text-gray-700 hover:bg-green-800 hover:text-gray-50'}}">
                       <svg class="{{ request()->routeIs('admin.facilities') ? 'h-6 w-6 shrink-0 text-gray-50' : 'h-6 w-6 shrink-0 text-gray-700 group-hover:text-gray-50'}}" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor">
                           <path stroke-linecap="round" stroke-linejoin="round" d="M2.25 21h19.5m-18-18v18m10.5-18v18m6-13.5V21M6.75 6.75h.75m-.75 3h.75m-.75 3h.75m3-6h.75m-.75 3h.75m-.75 3h.75M6.75 21v-3.375c0-.621.504-1.125 1.125-1.125h2.25c.621 0 1.125.504 1.125 1.125V21M3 3h12m-.75 4.5H21m-3.75 3.75h.008v.008h-.008v-.008Zm0 3h.008v.008h-.008v-.008Zm0 3h.008v.008h-.008v-.008Z" />
@@ -250,40 +260,21 @@
                       Patients
                     </a>
                   </li>
-                  {{-- <li>
-                    <a href="{{ route('facility.diagnosis') }}" wire:navigate class="{{ request()->routeIs('facility.diagnosis') ? 'group flex gap-x-3 rounded-md bg-green-800 p-2 text-md font-normal leading-6 text-gray-50' : 'group flex gap-x-3 rounded-md p-2 text-md font-normal leading-6 text-gray-700 hover:bg-green-800 hover:text-gray-50'}}">
-                        <svg class="{{ request()->routeIs('facility.diagnosis') ? 'h-6 w-6 shrink-0 text-gray-50' : 'h-6 w-6 shrink-0 text-gray-700 group-hover:text-gray-50'}}" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" aria-hidden="true">
+                  @if(auth()->user()->role->name != 'staff')
+                  <li>
+                    <!-- Current: "bg-gray-50 text-indigo-600", Default: "text-gray-700 hover:text-indigo-600 hover:bg-gray-50" -->
+                    <a href="{{ route('facility.user-management') }}" wire:navigate class="{{ request()->routeIs('facility.user-management') ? 'group flex gap-x-3 rounded-md bg-green-800 p-2 text-md font-normal leading-6 text-gray-50' : 'group flex gap-x-3 rounded-md p-2 text-md font-normal leading-6 text-gray-700 hover:bg-green-800 hover:text-gray-50'}}">
+                        <svg class="{{ request()->routeIs('facility.user-management') ? 'h-6 w-6 shrink-0 text-gray-50' : 'h-6 w-6 shrink-0 text-gray-700 group-hover:text-gray-50'}}" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" aria-hidden="true">
                             <path stroke-linecap="round" stroke-linejoin="round" d="M15 19.128a9.38 9.38 0 002.625.372 9.337 9.337 0 004.121-.952 4.125 4.125 0 00-7.533-2.493M15 19.128v-.003c0-1.113-.285-2.16-.786-3.07M15 19.128v.106A12.318 12.318 0 018.624 21c-2.331 0-4.512-.645-6.374-1.766l-.001-.109a6.375 6.375 0 0111.964-3.07M12 6.375a3.375 3.375 0 11-6.75 0 3.375 3.375 0 016.75 0zm8.25 2.25a2.625 2.625 0 11-5.25 0 2.625 2.625 0 015.25 0z" />
                           </svg>
-                      Diagnosis
+                      User Management
                     </a>
-                  </li> --}}
+                  </li>
+                  @endif
                 @endif
               </ul>
             </li>
-            {{-- <li>
-              <div class="text-xs font-semibold leading-6 text-gray-400">Your teams</div>
-              <ul role="list" class="-mx-2 mt-2 space-y-1">
-                <li>
-                  <a href="#" class="group flex gap-x-3 rounded-md p-2 text-sm font-semibold leading-6 text-gray-700 hover:bg-gray-50 hover:text-indigo-600">
-                    <span class="flex h-6 w-6 shrink-0 items-center justify-center rounded-lg border border-gray-200 bg-white text-[0.625rem] font-medium text-gray-400 group-hover:border-indigo-600 group-hover:text-indigo-600">H</span>
-                    <span class="truncate">Heroicons</span>
-                  </a>
-                </li>
-                <li>
-                  <a href="#" class="group flex gap-x-3 rounded-md p-2 text-sm font-semibold leading-6 text-gray-700 hover:bg-gray-50 hover:text-indigo-600">
-                    <span class="flex h-6 w-6 shrink-0 items-center justify-center rounded-lg border border-gray-200 bg-white text-[0.625rem] font-medium text-gray-400 group-hover:border-indigo-600 group-hover:text-indigo-600">T</span>
-                    <span class="truncate">Tailwind Labs</span>
-                  </a>
-                </li>
-                <li>
-                  <a href="#" class="group flex gap-x-3 rounded-md p-2 text-sm font-semibold leading-6 text-gray-700 hover:bg-gray-50 hover:text-indigo-600">
-                    <span class="flex h-6 w-6 shrink-0 items-center justify-center rounded-lg border border-gray-200 bg-white text-[0.625rem] font-medium text-gray-400 group-hover:border-indigo-600 group-hover:text-indigo-600">W</span>
-                    <span class="truncate">Workcation</span>
-                  </a>
-                </li>
-              </ul>
-            </li> --}}
+
             <li class="-mx-6 mt-auto py-1 px-3">
                 <form action="{{route('logout')}}" method="POST">
                     @csrf
@@ -294,11 +285,6 @@
                         Logout
                     </button>
                 </form>
-              {{-- <a href="#" class="flex items-center gap-x-4 px-6 py-3 text-sm font-semibold leading-6 text-gray-900 hover:bg-green-800 hover:text-gray-50">
-                <img class="h-8 w-8 rounded-full bg-gray-50" src="https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=facearea&facepad=2&w=256&h=256&q=80" alt="">
-                <span class="sr-only">Your profile</span>
-                <span aria-hidden="true">{{auth()->user()->name}}</span>
-              </a> --}}
             </li>
           </ul>
         </nav>

@@ -17,8 +17,8 @@ return new class extends Migration
             $table->string('philhealth_number');
             $table->string('first_name');
             $table->string('last_name');
-            $table->text('address');
-            $table->date('date_of_birth');
+            $table->text('address')->nullable();
+            $table->date('date_of_birth')->nullable();
             $table->timestamps();
         });
     }

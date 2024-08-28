@@ -11,6 +11,7 @@ use App\Livewire\Facility\Diagnosis;
 use Illuminate\Support\Facades\Route;
 use App\Livewire\Facility\PatientHistory;
 use App\Livewire\Facility\Dashboard as FacilityDashboard;
+use App\Livewire\Facility\UserManagement;
 
 /*
 |--------------------------------------------------------------------------
@@ -49,10 +50,11 @@ Route::get('admin/reports', Reports::class)->middleware(['auth', 'verified', 'ro
 
 
 // facility routes
-Route::get('/facility/dashboard', FacilityDashboard::class)->middleware(['auth', 'verified', 'role:facility'])->name('facility.dashboard');
-Route::get('/facility/cases', Cases::class)->middleware(['auth', 'verified', 'role:facility'])->name('facility.cases');
-Route::get('/facility/patients', Patients::class)->middleware(['auth', 'verified', 'role:facility'])->name('facility.patients');
-Route::get('/facility/diagnosis', Diagnosis::class)->middleware(['auth', 'verified', 'role:facility'])->name('facility.diagnosis');
+Route::get('/facility/dashboard', FacilityDashboard::class)->middleware(['auth', 'verified', 'role:facility,staff'])->name('facility.dashboard');
+Route::get('/facility/cases', Cases::class)->middleware(['auth', 'verified'])->name('facility.cases');
+Route::get('/facility/patients', Patients::class)->middleware(['auth', 'verified', 'role:facility,staff'])->name('facility.patients');
+Route::get('/facility/user-management', UserManagement::class)->middleware(['auth', 'verified', 'role:facility,staff'])->name('facility.user-management');
+Route::get('/facility/diagnosis', Diagnosis::class)->middleware(['auth', 'verified', 'role:facility,staff'])->name('facility.diagnosis');
 //route with parameter record
-Route::get('/facility/patient-history/{record}', PatientHistory::class)->middleware(['auth', 'verified', 'role:facility'])->name('facility.patient-history');
+Route::get('/facility/patient-history/{record}', PatientHistory::class)->middleware(['auth', 'verified', 'role:facility,staff'])->name('facility.patient-history');
 });

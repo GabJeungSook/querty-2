@@ -17,7 +17,9 @@ return new class extends Migration
             $table->foreignId('facility_id')->constrained()->cascadeOnDelete();
             $table->foreignId('case_category_id')->constrained()->cascadeOnDelete();
             $table->string('status')->nullable();
-            $table->text('diagnosis');
+            $table->text('initial_diagnosis');
+            $table->text('final_diagnosis')->nullable();
+            $table->date('date_of_diagnosis')->nullable();
             $table->timestamps();
         });
     }

@@ -12,6 +12,7 @@ use Filament\Tables\Contracts\HasTable;
 use Filament\Forms\Components\TextInput;
 use Filament\Tables\Actions\CreateAction;
 use Filament\Forms\Concerns\InteractsWithForms;
+use Filament\Tables\Actions\EditAction;
 use Filament\Tables\Concerns\InteractsWithTable;
 
 class Cases extends Component implements HasForms, HasTable
@@ -36,7 +37,19 @@ class Cases extends Component implements HasForms, HasTable
                     TextInput::make('name')
                     ->required()
                     ->maxLength(255),
-                ])->disableCreateAnother()
+                ])->visible(fn ($record) => auth()->user()->role->name === 'admin')
+                ->disableCreateAnother()
+        ])
+        ->actions([
+            EditAction::make()
+                ->label('Edit')
+                ->modalHeading('Edit Case Category')
+                ->button()
+                ->form([
+                    TextInput::make('name')
+                    ->required()
+                    ->maxLength(255),
+                ])->visible(fn ($record) => auth()->user()->role->name === 'admin')
         ]);
     }
 

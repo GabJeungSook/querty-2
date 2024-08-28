@@ -1,4 +1,9 @@
+@if (auth()->user()->role_id === 2)
 @section('title', auth()->user()->facilities->first()->name)
+@elseif(auth()->user()->role_id === 3)
+@section('title', auth()->user()->name)
+@endif
+
 <div class="signika-negative-100">
     <div class="pb-4 text-2xl signika-negative-400">
         <span>Dashboard</span>

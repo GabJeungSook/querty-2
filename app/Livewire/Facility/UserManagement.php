@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Livewire\Admin;
+namespace App\Livewire\Facility;
 
 use App\Models\User;
 use Livewire\Component;
@@ -18,35 +18,31 @@ use Filament\Tables\Actions\CreateAction;
 use Filament\Forms\Concerns\InteractsWithForms;
 use Filament\Tables\Concerns\InteractsWithTable;
 
-class Accounts extends Component implements HasForms, HasTable
+class UserManagement extends Component implements HasForms, HasTable
 {
     use InteractsWithTable;
     use InteractsWithForms;
     public $facility_id;
+
     public function table(Table $table): Table
     {
         return $table
-        ->query(User::query()->where('role_id', '!=', 3)->whereNot('id', 1))
+        ->query(User::query()->where('role_id', 3)->where('facility_id', auth()->user()->facilities->first()->id))
         ->columns([
             TextColumn::make('name')
             ->searchable(),
             TextColumn::make('email')
-
             ->searchable(),
-            TextColumn::make('facilities.name')
+            TextColumn::make('facility.name')
             ->label('Facility')
             ->searchable(),
         ])
         ->headerActions([
             CreateAction::make()
                 ->model(User::class)
-                ->label('Add Account')
-                ->modalHeading('Add Account')
+                ->label('Add User')
+                ->modalHeading('Add Users')
                 ->form([
-                    Select::make('facility_id')
-                    ->label('Facility')
-                    ->options(Facility::whereDoesntHave('user')->pluck('name', 'id'))
-                    ->searchable(),
                     TextInput::make('name')
                     ->required()
                     ->maxLength(255),
@@ -69,18 +65,12 @@ class Accounts extends Component implements HasForms, HasTable
                         ->maxLength(255),
                 ])
                 ->mutateFormDataUsing(function (array $data): array {
-                    $this->facility_id = $data['facility_id'];
+                    $this->facility_id = auth()->user()->facilities->first()->id;
                     unset($data['password_confirmation']);
-                    unset($data['facility_id']);
                     $data['password'] = Hash::make($data['password']);
-                    $data['role_id'] = 2;
+                    $data['facility_id'] = $this->facility_id;
+                    $data['role_id'] = 3;
                     return $data;
-                })
-                ->after(function (array $data) {
-                    $facility = Facility::find($this->facility_id);
-                    $user = User::latest()->first();
-                    $facility->user_id = $user->id;
-                    $facility->save();
                 })
                 ->disableCreateAnother()
         ])
@@ -100,6 +90,6 @@ class Accounts extends Component implements HasForms, HasTable
 
     public function render()
     {
-        return view('livewire.admin.accounts');
+        return view('livewire.facility.user-management');
     }
 }

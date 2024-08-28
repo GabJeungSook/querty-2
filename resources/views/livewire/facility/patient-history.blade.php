@@ -19,14 +19,14 @@
           <span class="text-left">Name:</span>
           <span class="text-center">{{$record->first_name.' '.$record->last_name}}</span>
       </div>
-      <div class="py-2">
+      {{-- <div class="py-2">
           <span class="text-left">Address:</span>
           <span class="text-center">{{$record->address}}</span>
       </div>
       <div class="py-2">
           <span class="text-left">Birthday:</span>
           <span class="text-center">{{Carbon\Carbon::parse($record->date_of_birth)->format('F, d Y')}}</span>
-      </div>
+      </div> --}}
       <div></div>
   </div>
   <div class="px-4 sm:px-6 lg:px-8">
@@ -39,9 +39,11 @@
             <thead>
               <tr class="divide-x divide-gray-200">
                 <th scope="col" class="py-3.5 pl-4 pr-4 text-left text-sm font-semibold text-gray-900 sm:pl-0">Facility</th>
-                <th scope="col" class="px-4 py-3.5 text-left text-sm font-semibold text-gray-900">Date</th>
+                <th scope="col" class="px-4 py-3.5 text-left text-sm font-semibold text-gray-900">Admission Date</th>
                 <th scope="col" class="px-4 py-3.5 text-left text-sm font-semibold text-gray-900">Case</th>
-                <th scope="col" class="py-3.5 pl-4 pr-4 text-left text-sm font-semibold text-gray-900 sm:pr-0">Diagnosis</th>
+                <th scope="col" class="py-3.5 pl-4 pr-4 text-left text-sm font-semibold text-gray-900 sm:pr-0">Initial Diagnosis</th>
+                <th scope="col" class="py-3.5 pl-4 pr-4 text-left text-sm font-semibold text-gray-900 sm:pr-0">Discharge Date</th>
+                <th scope="col" class="py-3.5 pl-4 pr-4 text-left text-sm font-semibold text-gray-900 sm:pr-0">Final Diagnosis</th>
               </tr>
             </thead>
             <tbody class="divide-y divide-gray-200 bg-white">
@@ -50,12 +52,13 @@
                 <td class="whitespace-nowrap py-4 pl-4 pr-4 text-sm font-medium text-gray-900 sm:pl-0">{{$item->facility->name}}</td>
                 <td class="whitespace-nowrap p-4 text-sm text-gray-500">{{Carbon\Carbon::parse($item->created_at)->format('F, d Y')}}</td>
                 <td class="whitespace-nowrap p-4 text-sm text-gray-500">{{$item->caseCategory->name}}</td>
-                    <td class="whitespace-normal p-4 text-sm text-gray-500">{{$item->diagnosis}}
-                </td>
+                <td class="whitespace-normal p-4 text-sm text-gray-500">{{$item->initial_diagnosis}}</td>
+                <td class="whitespace-nowrap p-4 text-sm text-gray-500">{{Carbon\Carbon::parse($item->date_of_diagnosis)->format('F, d Y')}}</td>
+                <td class="whitespace-nowrap p-4 text-sm text-gray-500">{{$item->final_diagnosis}}</td>
               </tr>
             @empty
                 <tr class="divide-x divide-gray-200">
-                    <td colspan="4" class="text-center whitespace-nowrap py-4 pl-4 pr-4 text-lg italic font-normal text-gray-900 sm:pl-0">
+                    <td colspan="6" class="text-center whitespace-nowrap py-4 pl-4 pr-4 text-lg italic font-normal text-gray-900 sm:pl-0">
                         ---No Record Yet---
                     </td>
                 </tr>
@@ -66,9 +69,13 @@
       </div>
     </div>
   </div>
-  <div class="flex justify-end">
+  <div class="flex justify-end space-x-3 mt-4">
+    @if ($record->patient->patientHistory->count() === 0)
     {{ $this->addDiagnosisAction }}
-
+    @else
+    {{ $this->editAdmissionAction }}
+    {{ $this->dischargeAction }}
+    @endif
     <x-filament-actions::modals />
     {{-- <a wire:navigate href="{{route('facility.patients')}}">
         <button type="button" class="flex text-sm text-gray-50 bg-green-800 hover:bg-green-600 p-2 font-semibold rounded-md border-1 border-green-600 leading-6">
