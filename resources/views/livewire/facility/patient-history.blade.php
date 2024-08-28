@@ -53,7 +53,7 @@
                 <td class="whitespace-nowrap p-4 text-sm text-gray-500">{{Carbon\Carbon::parse($item->created_at)->format('F, d Y')}}</td>
                 <td class="whitespace-nowrap p-4 text-sm text-gray-500">{{$item->caseCategory->name}}</td>
                 <td class="whitespace-normal p-4 text-sm text-gray-500">{{$item->initial_diagnosis}}</td>
-                <td class="whitespace-nowrap p-4 text-sm text-gray-500">{{Carbon\Carbon::parse($item->date_of_diagnosis)->format('F, d Y')}}</td>
+                <td class="whitespace-nowrap p-4 text-sm text-gray-500">{{$item->date_of_diagnosis === null ? '' : Carbon\Carbon::parse($item->date_of_diagnosis)->format('F, d Y')}}</td>
                 <td class="whitespace-nowrap p-4 text-sm text-gray-500">{{$item->final_diagnosis}}</td>
               </tr>
             @empty
