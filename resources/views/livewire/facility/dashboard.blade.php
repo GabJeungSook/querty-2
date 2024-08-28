@@ -12,12 +12,12 @@
         <div class="col-span-1">
             <div class="flex justify-between bg-gradient-to-r from-green-700 via-green-800 to-green-900 p-6 gap-8 rounded-lg shadow-xl">
                 <div class="my-auto">
-                  <div class="text-lg text-white">Registered Facilities</div>
-                  <div class="text-4xl text-white">143</div>
+                  <div class="text-lg text-white">My Patients</div>
+                  <div class="text-4xl text-white">139</div>
                 </div>
                 <div class="text-white my-auto bg-gradient-to-l from-green-700 via-green-800 to-green-900 rounded-full p-4">
                     <svg class="h-12 w-12" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor">
-                        <path stroke-linecap="round" stroke-linejoin="round" d="M3.75 21h16.5M4.5 3h15M5.25 3v18m13.5-18v18M9 6.75h1.5m-1.5 3h1.5m-1.5 3h1.5m3-6H15m-1.5 3H15m-1.5 3H15M9 21v-3.375c0-.621.504-1.125 1.125-1.125h3.75c.621 0 1.125.504 1.125 1.125V21" />
+                        <path stroke-linecap="round" stroke-linejoin="round" d="M17.982 18.725A7.488 7.488 0 0 0 12 15.75a7.488 7.488 0 0 0-5.982 2.975m11.963 0a9 9 0 1 0-11.963 0m11.963 0A8.966 8.966 0 0 1 12 21a8.966 8.966 0 0 1-5.982-2.275M15 9.75a3 3 0 1 1-6 0 3 3 0 0 1 6 0Z" />
                       </svg>
                 </div>
               </div>
@@ -25,12 +25,12 @@
         <div class="col-span-1">
             <div class="flex justify-between bg-gradient-to-r from-green-700 via-green-800 to-green-900 p-6 gap-8 rounded-lg shadow-xl">
                 <div class="my-auto">
-                  <div class="text-lg text-white">My Patients</div>
-                  <div class="text-4xl text-white">139</div>
+                  <div class="text-lg text-white">Registered Facilities</div>
+                  <div class="text-4xl text-white">143</div>
                 </div>
                 <div class="text-white my-auto bg-gradient-to-l from-green-700 via-green-800 to-green-900 rounded-full p-4">
                     <svg class="h-12 w-12" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor">
-                        <path stroke-linecap="round" stroke-linejoin="round" d="M17.982 18.725A7.488 7.488 0 0 0 12 15.75a7.488 7.488 0 0 0-5.982 2.975m11.963 0a9 9 0 1 0-11.963 0m11.963 0A8.966 8.966 0 0 1 12 21a8.966 8.966 0 0 1-5.982-2.275M15 9.75a3 3 0 1 1-6 0 3 3 0 0 1 6 0Z" />
+                        <path stroke-linecap="round" stroke-linejoin="round" d="M3.75 21h16.5M4.5 3h15M5.25 3v18m13.5-18v18M9 6.75h1.5m-1.5 3h1.5m-1.5 3h1.5m3-6H15m-1.5 3H15m-1.5 3H15M9 21v-3.375c0-.621.504-1.125 1.125-1.125h3.75c.621 0 1.125.504 1.125 1.125V21" />
                       </svg>
                 </div>
               </div>
