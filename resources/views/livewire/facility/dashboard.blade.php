@@ -50,7 +50,7 @@
     <div class="grid grid-cols-3 space-x-4 mt-10">
         <div class="col-span-2 bg-gray-50 shadow-lg rounded-lg p-4 font-medium text-lg">
             <div class="w-full">
-                <div>
+                {{-- <div>
                     <span class="my-3">
                         Patients
                     </span>
@@ -90,11 +90,32 @@
                             </tbody>
                           </table>
                     </div>
-                </div>
-
-                {{-- <div wire:ignore class="align-middle">
-                        <canvas id="facilityChart" class="mt-5" style="width: 420px;"></canvas>
                 </div> --}}
+
+                <div wire:ignore class="align-middle">
+                    <div class="flex justify-between">
+                        <div>
+                            <span class="my-3">
+                                Patients
+                            </span>
+                        </div>
+                        <div class="flex space-x-4">
+                            <div>
+                                <input wire:model="date_from" type="date" id="datetimepicker" name="datetimepicker" class="block w-full rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:max-w-xs sm:text-sm sm:leading-6">
+                            </div>
+                            <div>
+                                -
+                            </div>
+                            <div>
+                                <div>
+                                    <input wire:model="date_to" type="date" id="datetimepicker" name="datetimepicker" class="block w-full rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:max-w-xs sm:text-sm sm:leading-6">
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                        <canvas id="facilityChart" class="mt-5" style="width: 420px; height: 200px;"></canvas>
+                </div>
             </div>
         </div>
         <div class="col-span-1 bg-gray-50 shadow-lg rounded-lg p-4 font-medium text-lg">
@@ -149,37 +170,35 @@
     </div>
 </div>
 <script>
-// Declare a global variable to hold the chart instance
 let facilityChart;
 
 function createFacilityChart() {
     const ctx = document.getElementById('facilityChart').getContext('2d');
 
-    // Destroy the existing chart instance if it exists
-    if (facilityChart) {
-        facilityChart.destroy();
-    }
+    // if (facilityChart) {
+    //     facilityChart.destroy();
+    // }
 
-    const facilityData = [55250, 68254, 42896, 44685, 35784, 9584];
-    const facilityLabels = ['St. Elizabeth Hospital', 'General Santos Doctor Hospital Inc.', 'Sarmed', 'ACE Medical Center', 'St. Louis Hospital', 'Northern Mindanao Medical Center'];
+    const facilityData = [55250, 68254];
+    const facilityLabels = ['Admissions', 'Discharges'];
 
     const totalCases = facilityData.reduce((sum, value) => sum + value, 0);
     const averageCases = Math.round(totalCases / facilityData.length);
     const formattedAverageCases = new Intl.NumberFormat().format(averageCases);
 
     facilityChart = new Chart(ctx, {
-        type: 'doughnut',
+        type: 'bar', // Change the chart type to bar
         data: {
             labels: facilityLabels,
             datasets: [{
                 data: facilityData,
-                backgroundColor: ['#6C946F', '#F4CE14', '#FF8225', '#B43F3F', '#180161', '#134B70'],
-                hoverBackgroundColor: ['#6C946F', '#F4CE14', '#FF8225', '#B43F3F', '#180161', '#134B70'],
+                backgroundColor: ['#fc0000', '#fc8b00'],
+                hoverBackgroundColor: ['#fc0000', '#fc8b00'],
             }]
         },
         options: {
             responsive: true,
-            maintainAspectRatio: false,
+            maintainAspectRatio: true,
             plugins: {
                 legend: {
                     display: false, // Optionally hide the legend
@@ -187,22 +206,22 @@ function createFacilityChart() {
                 },
                 tooltip: {
                     callbacks: {
-                        label: (context) => `${context.label}: ${context.formattedValue} cases`
+                        label: (context) => `${context.label}: ${context.formattedValue} patients`
                     }
                 }
             },
         },
-        plugins: [{ // Define the custom plugin
+        plugins: [{
             id: 'centerText',
-            afterDraw: function(chart, args, options) {
-                const { ctx, chartArea: { top, right, bottom, left, width, height } } = chart;
-                ctx.save();
-                ctx.font = '16px sans-serif';
-                ctx.fillStyle = 'black';
-                ctx.textAlign = 'center';
-                ctx.textBaseline = 'middle';
-                ctx.fillText('Average: ' + formattedAverageCases, width / 2 + left, height / 2 + top);
-            }
+            // afterDraw: function(chart, args, options) {
+            //     const { ctx, chartArea: { top, right, bottom, left, width, height } } = chart;
+            //     ctx.save();
+            //     ctx.font = '16px sans-serif';
+            //     ctx.fillStyle = 'black';
+            //     ctx.textAlign = 'center';
+            //     ctx.textBaseline = 'middle';
+            //     ctx.fillText('Average: ' + formattedAverageCases, width / 2 + left, height / 2 + top);
+            // }
         }]
     });
 }
